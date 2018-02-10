@@ -25,10 +25,12 @@ namespace Bijankur.API.Controllers
 
 
         [HttpPost]
-        public IActionResult CreateUser([FromBody]UserRequestViewModel inputModel)
+        public IActionResult Post([FromBody]UserRequestViewModel inputModel)
         {
             try
             {
+                throw new Exception();
+
                 if (!ModelState.IsValid)
                 {
                       return BadRequest(new ApiBadRequestResponse(ModelState));
@@ -46,9 +48,8 @@ namespace Bijankur.API.Controllers
             }
             catch (Exception ex)
             {
-                
-                var Message = errorMessageService.GetErrorMessagesData("2007");
-                return Ok(new ApiInternalServerErrorResponse((int)HttpStatusCode.OK, true, Message, ""));
+                var Message = errorMessageService.GetErrorMessagesData("501");
+               return StatusCode((int)HttpStatusCode.InternalServerError, new ApiInternalServerErrorResponse((int)HttpStatusCode.InternalServerError, false, Message, ""));            
             }
         }
 

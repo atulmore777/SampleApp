@@ -70,8 +70,9 @@ namespace Bijankur.BL.ViewModels.ResponseViewModel
                 }
                 else
                 {
+                    string dbMessage = errorMessageRepository.GetByCode(errorMessage);
                     _objError.Code = errorMessage;
-                    _objError.Message = errorMessage;
+                    _objError.Message = dbMessage;
                     Errors.Add(_objError);
                 }
             }

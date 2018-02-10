@@ -7,6 +7,13 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore;
+using Bijankur.DAL;
+using Bijankur.BL.Services;
+using Bijankur.DAL.Repository;
+using Swashbuckle.Swagger;
+using Swashbuckle.Swagger.Model;
 
 namespace Bijankur.API
 {
@@ -37,7 +44,30 @@ namespace Bijankur.API
             // Add framework services.
             services.AddApplicationInsightsTelemetry(Configuration);
 
+            services.AddEntityFrameworkSqlServer()
+                    .AddDbContext<DataLayerContext>(options =>
+                    options.UseSqlServer(Configuration["Data:DefaultConnection:ConnectionString"]));
+
             services.AddMvc();
+
+            services.AddTransient<IErrorMessageService, ErrorMessageService>();
+            services.AddTransient<IUserService, UserService>();
+
+            services.AddTransient<IErrorMessageRepository, ErrorMessageRepository>();
+            services.AddTransient<IUserRepository, UserRepository>();
+
+
+
+            services.AddSwaggerGen(options => {
+                options.SingleApiVersion(new Info
+                {
+                    Version = "v1",
+                    Title = "Auth0 Swagger Sample API",
+                    Description = "API Sample made for Auth0",
+                    TermsOfService = "None"
+                });
+            });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline
@@ -46,11 +76,18 @@ namespace Bijankur.API
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
 
+            app.UseMvc();
             app.UseApplicationInsightsRequestTelemetry();
 
             app.UseApplicationInsightsExceptionTelemetry();
 
-            app.UseMvc();
+
+
+
+            /*Enabling swagger file*/
+            app.UseSwagger();
+            /*Enabling Swagger ui, consider doing it on Development env only*/
+            app.UseSwaggerUi();
         }
     }
 }

@@ -43,7 +43,7 @@ namespace Bijankur.DAL
 
             var configuration = builder.Build();
 
-            var sqlConnectionString = configuration["ConnectionStrings:DefaultConnection"];
+            var sqlConnectionString = configuration["Data:DefaultConnection:ConnectionString"];
 
             optionsBuilder.UseSqlServer(sqlConnectionString);
         }
