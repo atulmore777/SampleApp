@@ -10,12 +10,14 @@ namespace Bijankur.DAL.Models
         public long UserId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public string Email { get; set; }
+        public string Email { get; set; }   
         public string ContactNumber { get; set; }
         public string Address { get; set; }
         public DateTime? BirthDate { get; set; }
          public string Status { get; set; }
         public string UserType { get; set; }
+        public byte[] PasswordHash { get; set; }
+        public byte[] PasswordSalt { get; set; }
         public DateTime? CreatedOn { get; set; }
         public DateTime? UpdatedOn { get; set; }
         public string UpdatedBy { get; set; }

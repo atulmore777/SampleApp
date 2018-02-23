@@ -19,12 +19,15 @@ namespace Bijankur.BL.ViewModels.RequestViewModel
         [EmailAddress(ErrorMessage = "107")]
         public string email { get; set; }
 
+        [Required(ErrorMessage = "111")]    
+        public string password { get; set; }
+
         [Required(ErrorMessage = "104")]
         public string contactnumber { get; set; }
 
         [Required(ErrorMessage = "105")]
         [BirthDateValidate]
-        public DateTime birthdate { get; set; }
+        public string birthdate { get; set; }
 
         public string address { get; set; }
 

@@ -14,6 +14,7 @@ using Bijankur.BL.Services;
 using Bijankur.DAL.Repository;
 using Swashbuckle.Swagger;
 using Swashbuckle.Swagger.Model;
+using Serilog;
 
 namespace Bijankur.API
 {
@@ -34,6 +35,11 @@ namespace Bijankur.API
 
             builder.AddEnvironmentVariables();
             Configuration = builder.Build();
+
+            Log.Logger = new LoggerConfiguration()
+             .MinimumLevel.Debug()
+             .WriteTo.RollingFile(System.IO.Path.Combine(Configuration["Logging:LogFile:Path"], "log-{Date}.txt"))
+             .CreateLogger();
         }
 
         public IConfigurationRoot Configuration { get; }
@@ -73,8 +79,8 @@ namespace Bijankur.API
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
-            loggerFactory.AddConsole(Configuration.GetSection("Logging"));
-            loggerFactory.AddDebug();
+            loggerFactory.AddConsole(minLevel: LogLevel.Error);
+            loggerFactory.AddSerilog();
 
             app.UseMvc();
             app.UseApplicationInsightsRequestTelemetry();

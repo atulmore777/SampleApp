@@ -7,6 +7,7 @@ using Bijankur.BL.ViewModels.RequestViewModel;
 using Bijankur.BL.Services;
 using Bijankur.BL.ViewModels.ResponseViewModel;
 using System.Net;
+using Microsoft.Extensions.Logging;
 
 namespace Bijankur.API.Controllers
 {
@@ -15,12 +16,14 @@ namespace Bijankur.API.Controllers
     {
         private readonly IErrorMessageService errorMessageService;
         private readonly IUserService userService;
-
+        private readonly ILogger loggerService;
         public UserController(IErrorMessageService errorMessageService,
+                              ILoggerFactory loggerService,
                               IUserService userService)
         {
             this.errorMessageService = errorMessageService;
             this.userService = userService;
+            this.loggerService = loggerService.CreateLogger<UserController>();
         }
 
 
@@ -29,14 +32,13 @@ namespace Bijankur.API.Controllers
         {
             try
             {
-                throw new Exception();
-
                 if (!ModelState.IsValid)
                 {
                       return BadRequest(new ApiBadRequestResponse(ModelState));
                 }
 
                 ResponseViewModel<UserResponseViewModel> response = userService.CreateUser(inputModel);
+
                 if (response.Status)
                 {
                     return Ok(new ApiOkResponse((int)HttpStatusCode.OK, true, response.Message, response.Result));
@@ -48,10 +50,23 @@ namespace Bijankur.API.Controllers
             }
             catch (Exception ex)
             {
+                if (ex.InnerException != null)
+                {
+                    loggerService.LogError(1, "## [UserController][POST] innerexception :" + ex.InnerException.ToString());
+
+                    if (ex.InnerException.Message != null)
+                    {
+                        loggerService.LogError(1, "## [UserController][POST] innerexception message :" + ex.InnerException.Message.ToString());
+                    }
+                }
+                else
+                {
+                    loggerService.LogError(1, "## [UserController][POST] exception :" + ex.Message.ToString());
+                }
+
                 var Message = errorMessageService.GetErrorMessagesData("501");
                return StatusCode((int)HttpStatusCode.InternalServerError, new ApiInternalServerErrorResponse((int)HttpStatusCode.InternalServerError, false, Message, ""));            
             }
         }
-
     }
 }

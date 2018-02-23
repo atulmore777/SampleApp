@@ -1770,6 +1770,77 @@
           }
         }
       },
+      "Serilog/2.4.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.CSharp": "4.0.1",
+          "System.Collections": "4.0.11",
+          "System.Collections.NonGeneric": "4.0.1",
+          "System.Dynamic.Runtime": "4.0.11",
+          "System.Globalization": "4.0.11",
+          "System.Linq": "4.1.0",
+          "System.Reflection": "4.1.0",
+          "System.Reflection.Extensions": "4.0.1",
+          "System.Runtime": "4.1.0",
+          "System.Runtime.Extensions": "4.1.0",
+          "System.Text.RegularExpressions": "4.1.0",
+          "System.Threading": "4.0.11"
+        },
+        "compile": {
+          "lib/netstandard1.3/Serilog.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.3/Serilog.dll": {}
+        }
+      },
+      "Serilog.Extensions.Logging/1.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Logging.Abstractions": "1.0.0",
+          "Serilog": "2.0.0",
+          "System.Threading": "4.0.11"
+        },
+        "compile": {
+          "lib/netstandard1.3/Serilog.Extensions.Logging.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.3/Serilog.Extensions.Logging.dll": {}
+        }
+      },
+      "Serilog.Sinks.File/3.2.0": {
+        "type": "package",
+        "dependencies": {
+          "Serilog": "2.3.0",
+          "System.IO": "4.1.0",
+          "System.IO.FileSystem": "4.0.1",
+          "System.IO.FileSystem.Primitives": "4.0.1",
+          "System.Text.Encoding.Extensions": "4.0.11",
+          "System.Threading": "4.0.11",
+          "System.Threading.Timer": "4.0.1"
+        },
+        "compile": {
+          "lib/netstandard1.3/Serilog.Sinks.File.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.3/Serilog.Sinks.File.dll": {}
+        }
+      },
+      "Serilog.Sinks.RollingFile/3.3.0": {
+        "type": "package",
+        "dependencies": {
+          "Serilog.Sinks.File": "3.2.0",
+          "System.IO": "4.1.0",
+          "System.IO.FileSystem.Primitives": "4.0.1",
+          "System.Runtime.InteropServices": "4.1.0",
+          "System.Text.Encoding.Extensions": "4.0.11"
+        },
+        "compile": {
+          "lib/netstandard1.3/Serilog.Sinks.RollingFile.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.3/Serilog.Sinks.RollingFile.dll": {}
+        }
+      },
       "Swashbuckle/6.0.0-beta901": {
         "type": "package",
         "dependencies": {
@@ -3836,8 +3907,7 @@
           "Microsoft.EntityFrameworkCore.SqlServer": "1.0.1",
           "Microsoft.Extensions.Configuration": "1.0.0",
           "Microsoft.Extensions.Configuration.EnvironmentVariables": "1.0.0",
-          "Microsoft.Extensions.Configuration.Json": "1.0.0",
-          "NETStandard.Library": "1.6.0"
+          "Microsoft.Extensions.Configuration.Json": "1.0.0"
         },
         "compile": {
           "netstandard1.6/Bijankur.DAL.dll": {}
@@ -5284,6 +5354,62 @@
         "runtime.win7-x86.runtime.native.System.Data.SqlClient.sni.4.0.1.nupkg.sha512",
         "runtime.win7-x86.runtime.native.System.Data.SqlClient.sni.nuspec",
         "runtimes/win7-x86/native/sni.dll"
+      ]
+    },
+    "Serilog/2.4.0": {
+      "sha512": "Bzfqn8iwozwOrlBMO88u0TPy0oXZb9v79rRM9cL6N/cIBUUqEKm3HNncTxIKzspYz2dEzQDHKc3ONaZJ05Cbng==",
+      "type": "package",
+      "path": "Serilog/2.4.0",
+      "files": [
+        "Serilog.2.4.0.nupkg.sha512",
+        "Serilog.nuspec",
+        "lib/net45/Serilog.dll",
+        "lib/net45/Serilog.xml",
+        "lib/net46/Serilog.dll",
+        "lib/net46/Serilog.xml",
+        "lib/netstandard1.0/Serilog.dll",
+        "lib/netstandard1.0/Serilog.xml",
+        "lib/netstandard1.3/Serilog.dll",
+        "lib/netstandard1.3/Serilog.xml"
+      ]
+    },
+    "Serilog.Extensions.Logging/1.0.0": {
+      "sha512": "tWoaaep4wuMj4FrTxafWb3VbF3w0Le9OnFN3OP4emDg3wJk82tGzSnw4HPnaRu9tpO/qSVMH3zRm3FDjJQP1XQ==",
+      "type": "package",
+      "path": "Serilog.Extensions.Logging/1.0.0",
+      "files": [
+        "Serilog.Extensions.Logging.1.0.0.nupkg.sha512",
+        "Serilog.Extensions.Logging.nuspec",
+        "lib/net45/Serilog.Extensions.Logging.dll",
+        "lib/net45/Serilog.Extensions.Logging.xml",
+        "lib/netstandard1.3/Serilog.Extensions.Logging.dll",
+        "lib/netstandard1.3/Serilog.Extensions.Logging.xml"
+      ]
+    },
+    "Serilog.Sinks.File/3.2.0": {
+      "sha512": "VHbo68pMg5hwSWrzLEdZv5b/rYmIgHIRhd4d5rl8GnC5/a8Fr+RShT5kWyeJOXax1el6mNJ+dmHDOVgnNUQxaw==",
+      "type": "package",
+      "path": "Serilog.Sinks.File/3.2.0",
+      "files": [
+        "Serilog.Sinks.File.3.2.0.nupkg.sha512",
+        "Serilog.Sinks.File.nuspec",
+        "lib/net45/Serilog.Sinks.File.dll",
+        "lib/net45/Serilog.Sinks.File.xml",
+        "lib/netstandard1.3/Serilog.Sinks.File.dll",
+        "lib/netstandard1.3/Serilog.Sinks.File.xml"
+      ]
+    },
+    "Serilog.Sinks.RollingFile/3.3.0": {
+      "sha512": "2lT5X1r3GH4P0bRWJfhA7etGl8Q2Ipw9AACvtAHWRUSpYZ42NGVyHoVs2ALBZ/cAkkS+tA4jl80Zie144eLQPg==",
+      "type": "package",
+      "path": "Serilog.Sinks.RollingFile/3.3.0",
+      "files": [
+        "Serilog.Sinks.RollingFile.3.3.0.nupkg.sha512",
+        "Serilog.Sinks.RollingFile.nuspec",
+        "lib/net45/Serilog.Sinks.RollingFile.dll",
+        "lib/net45/Serilog.Sinks.RollingFile.xml",
+        "lib/netstandard1.3/Serilog.Sinks.RollingFile.dll",
+        "lib/netstandard1.3/Serilog.Sinks.RollingFile.xml"
       ]
     },
     "Swashbuckle/6.0.0-beta901": {
@@ -9998,6 +10124,7 @@
       "Microsoft.AspNetCore.Server.Kestrel >= 1.0.1",
       "Microsoft.EntityFrameworkCore >= 1.0.1",
       "Microsoft.EntityFrameworkCore.SqlServer >= 1.0.1",
+      "Microsoft.Extensions.Configuration >= 1.0.0",
       "Microsoft.Extensions.Configuration.EnvironmentVariables >= 1.0.0",
       "Microsoft.Extensions.Configuration.FileExtensions >= 1.0.0",
       "Microsoft.Extensions.Configuration.Json >= 1.0.0",
@@ -10006,6 +10133,9 @@
       "Microsoft.Extensions.Logging.Debug >= 1.0.0",
       "Microsoft.Extensions.Options.ConfigurationExtensions >= 1.0.0",
       "Microsoft.NETCore.App >= 1.0.1",
+      "Serilog >= 2.4.0",
+      "Serilog.Extensions.Logging >= 1.0.0",
+      "Serilog.Sinks.RollingFile >= 3.3.0",
       "Swashbuckle >= 6.0.0-beta901"
     ],
     ".NETCoreApp,Version=v1.0": []

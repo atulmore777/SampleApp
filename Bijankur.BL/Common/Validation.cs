@@ -20,16 +20,58 @@ namespace Bijankur.BL.Common
             {
                 if (value != null)
                 {
-                    DateTime _birthJoin = Convert.ToDateTime(value);
-                    if (_birthJoin > DateTime.Now)
+                    bool result = false;
+
+                    var formats = new[] { "yyyy-MM-ddThh:mm:ssZ", "yyyy-MM-dd'T'HH:mm:ss'Z'" };
+                    string strDate = Convert.ToString(value);
+                    DateTime dt;
+                    if (DateTime.TryParseExact(strDate, formats, CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind, out dt))
                     {
-                        DataLayerContext dlContext = new DataLayerContext();
-                        ErrorMessageRepository errorMessageRepository = new ErrorMessageRepository(dlContext);
-                        var message = errorMessageRepository.GetByCode("106");
-                        return new ValidationResult(message);
+                        result = true;
+                    }
+                    else
+                    {
+                        result = false;
+                    }
+
+                    if (result)
+                    {
+                        DateTime _birthJoin = Convert.ToDateTime(value);
+                        if (_birthJoin > DateTime.Now)
+                        {
+                           return new ValidationResult("106");
+                        }
+                    }
+                    else
+                    {
+                                           
+                        return new ValidationResult("112");
                     }
                 }
                 return ValidationResult.Success;
+            }
+        }
+        public class DateValidate : ValidationAttribute
+        {
+            public override bool IsValid(object value)
+            {
+                bool result = true;
+
+                if (value != null)
+                {
+                    var formats = new[] {  "yyyy-MM-ddThh:mm:ssZ","yyyy-MM-dd'T'HH:mm:ss'Z'"};
+                    string strDate = Convert.ToString(value);
+                    DateTime dt;
+                    if (DateTime.TryParseExact(strDate, formats,CultureInfo.InvariantCulture,DateTimeStyles.RoundtripKind,out dt))
+                    {
+                       result = true;                                                
+                    }
+                    else
+                    {
+                        result = false;
+                    }
+                }
+                return result;
             }
         }
 

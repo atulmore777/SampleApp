@@ -20,7 +20,11 @@
     "Microsoft.EntityFrameworkCore": "1.0.1",
     "Microsoft.EntityFrameworkCore.SqlServer": "1.0.1",
     "Swashbuckle": "6.0.0-beta901",
-    "Bijankur.DAL": "1.0.0-*"
+    "Bijankur.DAL": "1.0.0-*",
+    "Microsoft.Extensions.Configuration": "1.0.0",
+    "Serilog": "2.4.0",
+    "Serilog.Extensions.Logging": "1.0.0",
+    "Serilog.Sinks.RollingFile": "3.3.0"
   },
 
   "tools": {

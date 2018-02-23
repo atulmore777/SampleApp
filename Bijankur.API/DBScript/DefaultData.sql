@@ -42,8 +42,14 @@ VALUES (8, '108','User','Invalid user status','en',getdate(),getdate(),'admin','
 INSERT INTO ErrorMessage (ErrorMessageId, ErrorCode,Module, Message ,ErrorLanguage,CreatedOn,UpdatedOn,CreatedBy,UpdatedBy)
 VALUES (9, '109','User','Invalid user type','en',getdate(),getdate(),'admin','admin');
 
+INSERT INTO ErrorMessage (ErrorMessageId, ErrorCode,Module, Message ,ErrorLanguage,CreatedOn,UpdatedOn,CreatedBy,UpdatedBy)
+VALUES (11, '111','User','Required password','en',getdate(),getdate(),'admin','admin');
 
+INSERT INTO ErrorMessage (ErrorMessageId, ErrorCode,Module, Message ,ErrorLanguage,CreatedOn,UpdatedOn,CreatedBy,UpdatedBy)
+VALUES (12, '112','User','Invalid date format','en',getdate(),getdate(),'admin','admin');
 
+INSERT INTO ErrorMessage (ErrorMessageId, ErrorCode,Module, Message ,ErrorLanguage,CreatedOn,UpdatedOn,CreatedBy,UpdatedBy)
+VALUES (13, '113','User','Invalid birth date','en',getdate(),getdate(),'admin','admin');
 
 
 INSERT INTO Permission (CreatedOn, PermissionCode ,Name,PermissionName,UpdatedOn)
