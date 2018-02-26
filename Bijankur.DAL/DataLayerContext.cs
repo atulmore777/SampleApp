@@ -11,10 +11,12 @@ namespace Bijankur.DAL
     public class DataLayerContext : DbContext
     {
         public DbSet<Users> Users { get; set; }
+        public DbSet<Roles> Roles { get; set; }
         public DbSet<ErrorMessage> ErrorMessage { get; set; }
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.Entity<Users>().HasKey(m => m.UserId);
+            builder.Entity<Roles>().HasKey(m => m.RoleId);
             builder.Entity<ErrorMessage>().HasKey(m => m.ErrorMessageId);
         }
         public override int SaveChanges()

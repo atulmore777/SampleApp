@@ -13,7 +13,6 @@ namespace Bijankur.BL.Common
 {
     public class Validation
     {
-        public static IConfiguration Configuration { get; set; }
         public class BirthDateValidate : ValidationAttribute
         {
             protected override ValidationResult IsValid(object value, ValidationContext validationContext)
@@ -131,6 +130,59 @@ namespace Bijankur.BL.Common
                 }
                 return result;
             }
-        }        
+        }
+
+        public class UserIdValidate : ValidationAttribute
+        {
+            public override bool IsValid(object value)
+            {
+                bool result = false;
+                try
+                {
+                    long userId = Convert.ToInt64(value);
+                    DataLayerContext dlContext = new DataLayerContext();
+                    UserRepository userRepository = new UserRepository(dlContext);
+                    var userData = userRepository.Find(userId);
+                    if (userData != null && userData.UserId > 0)
+                    {
+                        result = true;
+                    }
+                }
+                catch(Exception ex)
+                {
+                    result = false;
+                }             
+                return result;
+            }
+        }
+
+        //public class RoleNameValidate : ValidationAttribute
+        //{
+        //    public override bool IsValid(object value)
+        //    {
+        //        bool result = true;
+        //        try
+        //        {
+        //            if (value != null && value != "")
+        //            {
+        //                result = false;
+
+        //                string roleName = Convert.ToString(value);
+        //                DataLayerContext dlContext = new DataLayerContext();
+        //                RoleRepository roleRepository = new RoleRepository(dlContext);
+        //                var roleData = roleRepository.FindByName(roleName);
+        //                if (roleData != null && roleData.RoleId > 0)
+        //                {
+        //                    result = true;
+        //                }
+        //            }
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            result = false;
+        //        }
+        //        return result;
+        //    }
+        //}
     }
 }

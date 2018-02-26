@@ -46,10 +46,48 @@ INSERT INTO ErrorMessage (ErrorMessageId, ErrorCode,Module, Message ,ErrorLangua
 VALUES (11, '111','User','Required password','en',getdate(),getdate(),'admin','admin');
 
 INSERT INTO ErrorMessage (ErrorMessageId, ErrorCode,Module, Message ,ErrorLanguage,CreatedOn,UpdatedOn,CreatedBy,UpdatedBy)
-VALUES (12, '112','User','Invalid date format','en',getdate(),getdate(),'admin','admin');
+VALUES (12, '112','User','Invalid birth date','en',getdate(),getdate(),'admin','admin');
 
 INSERT INTO ErrorMessage (ErrorMessageId, ErrorCode,Module, Message ,ErrorLanguage,CreatedOn,UpdatedOn,CreatedBy,UpdatedBy)
-VALUES (13, '113','User','Invalid birth date','en',getdate(),getdate(),'admin','admin');
+VALUES (13, '113','User','Required username','en',getdate(),getdate(),'admin','admin');
+
+INSERT INTO ErrorMessage (ErrorMessageId, ErrorCode,Module, Message ,ErrorLanguage,CreatedOn,UpdatedOn,CreatedBy,UpdatedBy)
+VALUES (14, '114','User','Required password','en',getdate(),getdate(),'admin','admin');
+
+INSERT INTO ErrorMessage (ErrorMessageId, ErrorCode,Module, Message ,ErrorLanguage,CreatedOn,UpdatedOn,CreatedBy,UpdatedBy)
+VALUES (15, '115','User','Invalid login attempt','en',getdate(),getdate(),'admin','admin');
+
+INSERT INTO ErrorMessage (ErrorMessageId, ErrorCode,Module, Message ,ErrorLanguage,CreatedOn,UpdatedOn,CreatedBy,UpdatedBy)
+VALUES (16, '116','User','Users found','en',getdate(),getdate(),'admin','admin');
+
+INSERT INTO ErrorMessage (ErrorMessageId, ErrorCode,Module, Message ,ErrorLanguage,CreatedOn,UpdatedOn,CreatedBy,UpdatedBy)
+VALUES (17, '117','User','Users not found','en',getdate(),getdate(),'admin','admin');
+
+
+INSERT INTO ErrorMessage (ErrorMessageId, ErrorCode,Module, Message ,ErrorLanguage,CreatedOn,UpdatedOn,CreatedBy,UpdatedBy)
+VALUES (18, '118','User','Userid not found','en',getdate(),getdate(),'admin','admin');
+
+INSERT INTO ErrorMessage (ErrorMessageId, ErrorCode,Module, Message ,ErrorLanguage,CreatedOn,UpdatedOn,CreatedBy,UpdatedBy)
+VALUES (19, '119','User','Required userid ','en',getdate(),getdate(),'admin','admin');
+
+INSERT INTO ErrorMessage (ErrorMessageId, ErrorCode,Module, Message ,ErrorLanguage,CreatedOn,UpdatedOn,CreatedBy,UpdatedBy)
+VALUES (20, '120','User','User not updated ','en',getdate(),getdate(),'admin','admin');
+
+INSERT INTO ErrorMessage (ErrorMessageId, ErrorCode,Module, Message ,ErrorLanguage,CreatedOn,UpdatedOn,CreatedBy,UpdatedBy)
+VALUES (21, '121','Role','Role already exists','en',getdate(),getdate(),'admin','admin');
+
+INSERT INTO ErrorMessage (ErrorMessageId, ErrorCode,Module, Message ,ErrorLanguage,CreatedOn,UpdatedOn,CreatedBy,UpdatedBy)
+VALUES (22, '122','Role','Role not created','en',getdate(),getdate(),'admin','admin');
+
+INSERT INTO ErrorMessage (ErrorMessageId, ErrorCode,Module, Message ,ErrorLanguage,CreatedOn,UpdatedOn,CreatedBy,UpdatedBy)
+VALUES (23, '123','Role','Roles found','en',getdate(),getdate(),'admin','admin');
+
+INSERT INTO ErrorMessage (ErrorMessageId, ErrorCode,Module, Message ,ErrorLanguage,CreatedOn,UpdatedOn,CreatedBy,UpdatedBy)
+VALUES (24, '124','Role','Roles not found','en',getdate(),getdate(),'admin','admin');
+
+INSERT INTO ErrorMessage (ErrorMessageId, ErrorCode,Module, Message ,ErrorLanguage,CreatedOn,UpdatedOn,CreatedBy,UpdatedBy)
+VALUES (25, '125','Role','Role not found','en',getdate(),getdate(),'admin','admin');
+
 
 
 INSERT INTO Permission (CreatedOn, PermissionCode ,Name,PermissionName,UpdatedOn)

@@ -15,6 +15,10 @@ using Bijankur.DAL.Repository;
 using Swashbuckle.Swagger;
 using Swashbuckle.Swagger.Model;
 using Serilog;
+using Bijankur.BL.Security;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+using Bijankur.API.Common;
 
 namespace Bijankur.API
 {
@@ -56,13 +60,20 @@ namespace Bijankur.API
 
             services.AddMvc();
 
+        
+            services.Configure<JWTSettings>(Configuration.GetSection("JWTSettings"));
+
             services.AddTransient<IErrorMessageService, ErrorMessageService>();
             services.AddTransient<IUserService, UserService>();
+            services.AddTransient<IRoleService, RoleService>();
 
+            
             services.AddTransient<IErrorMessageRepository, ErrorMessageRepository>();
             services.AddTransient<IUserRepository, UserRepository>();
+            services.AddTransient<IRoleRepository, RoleRepository>();
 
-
+            services.AddTransient<ISecurityHelper, SecurityHelper>();
+            
 
             services.AddSwaggerGen(options => {
                 options.SingleApiVersion(new Info
@@ -72,6 +83,7 @@ namespace Bijankur.API
                     Description = "API Sample made for Auth0",
                     TermsOfService = "None"
                 });
+                options.OperationFilter<AddAuthTokenHeaderParameter>();
             });
 
         }
@@ -81,6 +93,30 @@ namespace Bijankur.API
         {
             loggerFactory.AddConsole(minLevel: LogLevel.Error);
             loggerFactory.AddSerilog();
+
+            // secretKey contains a secret passphrase only your server knows
+            var secretKey = Configuration.GetSection("JWTSettings:SecretKey").Value;
+            var issuer = Configuration.GetSection("JWTSettings:Issuer").Value;
+            var audience = Configuration.GetSection("JWTSettings:Audience").Value;
+            var signingKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(secretKey));
+            var tokenValidationParameters = new TokenValidationParameters
+            {
+                ValidateIssuerSigningKey = true,
+                IssuerSigningKey = signingKey,
+
+                // Validate the JWT Issuer (iss) claim
+                ValidateIssuer = true,
+                ValidIssuer = issuer,
+
+                // Validate the JWT Audience (aud) claim
+                ValidateAudience = true,
+                ValidAudience = audience
+            };
+            app.UseJwtBearerAuthentication(new JwtBearerOptions
+            {
+                TokenValidationParameters = tokenValidationParameters
+            });
+
 
             app.UseMvc();
             app.UseApplicationInsightsRequestTelemetry();

@@ -3,8 +3,11 @@
 
   "dependencies": {
     "Bijankur.DAL": "1.0.0-*",
+    "JWT": "3.1.1",
     "Microsoft.AspNetCore.Mvc.Abstractions": "1.0.6",
-    "NETStandard.Library": "1.6.0"
+    "Microsoft.AspNetCore.Mvc.Formatters.Json": "1.0.1",
+    "NETStandard.Library": "1.6.0",
+    "System.IdentityModel.Tokens.Jwt": "5.0.0"
   },
 
   "frameworks": {

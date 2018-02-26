@@ -2,14 +2,17 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Runtime.Serialization;
 using System.Threading.Tasks;
 using static Bijankur.BL.Common.Validation;
 
 namespace Bijankur.BL.ViewModels.RequestViewModel
 {
-    public class UserRegisterRequestViewModel
+    public class UserUpdateRequestViewModel
     {
+        [Required(ErrorMessage = "119")]
+        [UserIdValidate(ErrorMessage = "118")]
+        public long userid { get; set; }
+
         [Required(ErrorMessage = "101")]
         public string firstname { get; set; }
 
@@ -20,7 +23,7 @@ namespace Bijankur.BL.ViewModels.RequestViewModel
         [EmailAddress(ErrorMessage = "107")]
         public string email { get; set; }
 
-        [Required(ErrorMessage = "111")]    
+        [Required(ErrorMessage = "111")]
         public string password { get; set; }
 
         [Required(ErrorMessage = "104")]
@@ -37,9 +40,5 @@ namespace Bijankur.BL.ViewModels.RequestViewModel
 
         [UserTypeValidate(ErrorMessage = "109")]
         public string usertype { get; set; }
-
-        [IgnoreDataMember]
-        public string createdby { get; set; }
-      
     }
 }
