@@ -1,13 +1,14 @@
-﻿using Bijankur.DAL;
-using Bijankur.DAL.Models;
-using Bijankur.DAL.Repository;
+﻿using BJK.DAL;
+using BJK.DAL.Models;
+using BJK.DAL.Repository;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Bijankur.BL.ViewModels.ResponseViewModel
+namespace BJK.BL.ViewModels.ResponseViewModel
 {
     public class ResponseViewModel<T>
     {
@@ -50,7 +51,7 @@ namespace Bijankur.BL.ViewModels.ResponseViewModel
         public ApiBadRequestResponse(ModelStateDictionary modelState) : base(400)
         {
             Errors = new List<Error>();
-            DataLayerContext dlContext = new DataLayerContext();
+            DataLayerContext dlContext = new DataLayerContext();           
             ErrorMessageRepository errorMessageRepository = new ErrorMessageRepository(dlContext);
 
             IEnumerable<string> LstError = modelState.SelectMany(x => x.Value.Errors).Select(x => x.ErrorMessage).ToArray();

@@ -1,5 +1,5 @@
-﻿using Bijankur.BL.Services;
-using Bijankur.BL.ViewModels.ResponseViewModel;
+﻿using BJK.BL.Services;
+using BJK.BL.ViewModels.ResponseViewModel;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using System;
@@ -11,7 +11,7 @@ using JWT;
 using JWT.Algorithms;
 using JWT.Serializers;
 
-namespace Bijankur.BL.Security
+namespace BJK.BL.Security
 {
     public interface ISecurityHelper
     {

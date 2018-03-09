@@ -88,13 +88,57 @@ VALUES (24, '124','Role','Roles not found','en',getdate(),getdate(),'admin','adm
 INSERT INTO ErrorMessage (ErrorMessageId, ErrorCode,Module, Message ,ErrorLanguage,CreatedOn,UpdatedOn,CreatedBy,UpdatedBy)
 VALUES (25, '125','Role','Role not found','en',getdate(),getdate(),'admin','admin');
 
+INSERT INTO ErrorMessage (ErrorMessageId, ErrorCode,Module, Message ,ErrorLanguage,CreatedOn,UpdatedOn,CreatedBy,UpdatedBy)
+VALUES (26, '126','Role','Required rolename ','en',getdate(),getdate(),'admin','admin');
 
 
-INSERT INTO Permission (CreatedOn, PermissionCode ,Name,PermissionName,UpdatedOn)
-VALUES (getdate(),'Area:Create','Area Create', 'Area Create',getdate());
+INSERT INTO ErrorMessage (ErrorMessageId, ErrorCode,Module, Message ,ErrorLanguage,CreatedOn,UpdatedOn,CreatedBy,UpdatedBy)
+VALUES (27, '127','Role','Required roledescription ','en',getdate(),getdate(),'admin','admin');
+
+INSERT INTO ErrorMessage (ErrorMessageId, ErrorCode,Module, Message ,ErrorLanguage,CreatedOn,UpdatedOn,CreatedBy,UpdatedBy)
+VALUES (28, '128','Role','Required roleid ','en',getdate(),getdate(),'admin','admin');
+
+INSERT INTO ErrorMessage (ErrorMessageId, ErrorCode,Module, Message ,ErrorLanguage,CreatedOn,UpdatedOn,CreatedBy,UpdatedBy)
+VALUES (29, '129','Role','Invalid roleid ','en',getdate(),getdate(),'admin','admin');
+
+INSERT INTO ErrorMessage (ErrorMessageId, ErrorCode,Module, Message ,ErrorLanguage,CreatedOn,UpdatedOn,CreatedBy,UpdatedBy)
+VALUES (30, '130','Role','Role name already exists ','en',getdate(),getdate(),'admin','admin');
+
+INSERT INTO ErrorMessage (ErrorMessageId, ErrorCode,Module, Message ,ErrorLanguage,CreatedOn,UpdatedOn,CreatedBy,UpdatedBy)
+VALUES (31, '131','Permission','You do not have permission','en',getdate(),getdate(),'admin','admin');
+
+INSERT INTO ErrorMessage (ErrorMessageId, ErrorCode,Module, Message ,ErrorLanguage,CreatedOn,UpdatedOn,CreatedBy,UpdatedBy)
+VALUES (32, '132','Menu','Menus not found','en',getdate(),getdate(),'admin','admin');
+
+INSERT INTO ErrorMessage (ErrorMessageId, ErrorCode,Module, Message ,ErrorLanguage,CreatedOn,UpdatedOn,CreatedBy,UpdatedBy)
+VALUES (33, '133','Menu','Menus get sucessfully','en',getdate(),getdate(),'admin','admin');
+
+INSERT INTO ErrorMessage (ErrorMessageId, ErrorCode,Module, Message ,ErrorLanguage,CreatedOn,UpdatedOn,CreatedBy,UpdatedBy)
+VALUES (34, '134','Permission','Invalid permissionid','en',getdate(),getdate(),'admin','admin');
+
+INSERT INTO ErrorMessage (ErrorMessageId, ErrorCode,Module, Message ,ErrorLanguage,CreatedOn,UpdatedOn,CreatedBy,UpdatedBy)
+VALUES (35, '135','Permission','Permission assigned successfully','en',getdate(),getdate(),'admin','admin');
+
+INSERT INTO ErrorMessage (ErrorMessageId, ErrorCode,Module, Message ,ErrorLanguage,CreatedOn,UpdatedOn,CreatedBy,UpdatedBy)
+VALUES (36, '136','Permission','Permission not assigned due to some other error','en',getdate(),getdate(),'admin','admin');
+
+INSERT INTO Permission (PermissionCode,PermissionName,Module,Description,CreatedOn,UpdatedOn,CreatedBy,UpdatedBy)
+VALUES ('User:Create','User Create', 'User','Create user',getdate(),getdate(),'system admin','system admin');
+
+INSERT INTO Permission (PermissionCode,PermissionName,Module,Description,CreatedOn,UpdatedOn,CreatedBy,UpdatedBy)
+VALUES ('User:Get','User Get', 'User','Get all user',getdate(),getdate(),'system admin','system admin');
+
+
 
 INSERT INTO RolePermission (RoleId, PermissionID ,CreatedOn,CreatedBy,UpdatedOn,UpdatedBy,IsDeleted)
 VALUES (1,1,getdate(),'admin',getdate(),'admin',null);
+
+INSERT INTO RolePermission (RoleId, PermissionID ,CreatedOn,CreatedBy,UpdatedOn,UpdatedBy,IsDeleted)
+VALUES (1,2,getdate(),'admin',getdate(),'admin',null);
+
+/* Assign Role  */
+INSERT INTO UserRole(RoleId,UserId,CreatedOn,UpdatedOn,CreatedBy,UpdatedBy)
+VALUES(1,1,getdate(),getdate(),'admin','admin')
 
 /* User */
 

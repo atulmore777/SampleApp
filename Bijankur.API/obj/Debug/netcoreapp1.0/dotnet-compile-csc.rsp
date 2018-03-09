@@ -204,5 +204,6 @@
 "D:\Other\BKR\Bijankur.API\Program.cs"
 "D:\Other\BKR\Bijankur.API\Startup.cs"
 "D:\Other\BKR\Bijankur.API\Common\AddAuthTokenHeaderParameter.cs"
+"D:\Other\BKR\Bijankur.API\Controllers\PermissionController.cs"
 "D:\Other\BKR\Bijankur.API\Controllers\RoleController.cs"
 "D:\Other\BKR\Bijankur.API\Controllers\UserController.cs"

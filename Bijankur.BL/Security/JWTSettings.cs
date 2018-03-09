@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Bijankur.BL.Security
+namespace BJK.BL.Security
 {
     public class JWTSettings
     {

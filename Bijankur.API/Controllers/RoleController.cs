@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Bijankur.BL.ViewModels.RequestViewModel;
-using Bijankur.BL.Services;
-using Bijankur.BL.ViewModels.ResponseViewModel;
+using BJK.BL.ViewModels.RequestViewModel;
+using BJK.BL.Services;
+using BJK.BL.ViewModels.ResponseViewModel;
 using System.Net;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Authorization;
@@ -13,7 +13,7 @@ using System.Security.Claims;
 
 // For more information on enabling Web API for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
-namespace Bijankur.API.Controllers
+namespace BJK.API.Controllers
 {
     [Route("api/[controller]")]
     public class RoleController : Controller
@@ -160,18 +160,55 @@ namespace Bijankur.API.Controllers
             }
         }
 
-        /*
+       
         // PUT api/values/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
+        [HttpPut]
+        public IActionResult Put([FromBody]RoleUpdateRequestViewModel inputModel)
         {
-        }
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(new ApiBadRequestResponse(ModelState));
+                }
 
-        // DELETE api/values/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
+                var currentUser = HttpContext.User;
+                if (currentUser.HasClaim(c => c.Type == ClaimTypes.Email))
+                {
+                    string email = currentUser.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Email).Value;
+                    inputModel.updatedby = email;
+                }
+
+                ResponseViewModel<RoleUpdateResponseViewModel> response = _roleService.UpdateRole(inputModel);
+
+                if (response.Status)
+                {
+                    return Ok(new ApiOkResponse((int)HttpStatusCode.OK, true, response.Message, response.Result));
+                }
+                else
+                {
+                    return Ok(new ApiBadResponse(response.StatusCode, response.Status, response.Message, "", response.Errors));
+                }
+            }
+            catch (Exception ex)
+            {
+                if (ex.InnerException != null)
+                {
+                    _loggerService.LogError(1, "## [RoleController][Put] innerexception :" + ex.InnerException.ToString());
+
+                    if (ex.InnerException.Message != null)
+                    {
+                        _loggerService.LogError(1, "## [RoleController][Put] innerexception message :" + ex.InnerException.Message.ToString());
+                    }
+                }
+                else
+                {
+                    _loggerService.LogError(1, "## [RoleController][Put] exception :" + ex.Message.ToString());
+                }
+
+                var Message = _errorMessageService.GetErrorMessagesData("501");
+                return StatusCode((int)HttpStatusCode.InternalServerError, new ApiInternalServerErrorResponse((int)HttpStatusCode.InternalServerError, false, Message, ""));
+            }
         }
-        */
-    }
+     }
 }

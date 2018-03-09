@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Bijankur.DAL", "Bijankur.DAL\Bijankur.DAL.xproj", "{908A3908-6E88-4406-AA5E-70F0E41A3668}"
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "BJK.DAL", "Bijankur.DAL\BJK.DAL.xproj", "{908A3908-6E88-4406-AA5E-70F0E41A3668}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Bijankur.BL", "Bijankur.BL\Bijankur.BL.xproj", "{AFFE0F52-E5F6-4E1B-98F1-5768E898BFD3}"
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "BJK.BL", "Bijankur.BL\BJK.BL.xproj", "{AFFE0F52-E5F6-4E1B-98F1-5768E898BFD3}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Bijankur.API", "Bijankur.API\Bijankur.API.xproj", "{4C6A22D7-6B0C-4161-A9A5-D0C3BBD0EBB2}"
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "BJK.API", "Bijankur.API\BJK.API.xproj", "{4C6A22D7-6B0C-4161-A9A5-D0C3BBD0EBB2}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{FCFF25DD-94DF-415F-A621-5B4F143A33EA}"
 	ProjectSection(SolutionItems) = preProject

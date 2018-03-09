@@ -3,15 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Bijankur.BL.ViewModels.RequestViewModel;
-using Bijankur.BL.Services;
-using Bijankur.BL.ViewModels.ResponseViewModel;
+using BJK.BL.ViewModels.RequestViewModel;
+using BJK.BL.Services;
+using BJK.BL.ViewModels.ResponseViewModel;
 using System.Net;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Authorization;
 using System.Security.Claims;
+using BJK.BL.Common;
+using BJK.BL.Security;
 
-namespace Bijankur.API.Controllers
+namespace BJK.API.Controllers
 {
     [Route("api/[controller]")]
     public class UserController : Controller
@@ -30,6 +32,7 @@ namespace Bijankur.API.Controllers
 
         [Authorize]
         [HttpGet]
+        [AuthoriseAttribute(Permission = "User:Get")]
         public IActionResult Get()
         {
             try
@@ -68,7 +71,7 @@ namespace Bijankur.API.Controllers
         }
 
         [Authorize]
-        [HttpGet("{id}")]
+        [HttpGet("GetById/{id}")]
         public IActionResult Get(long id)
         {
             try

@@ -1,10 +1,14 @@
-﻿using Bijankur.DAL.Models;
+﻿using BJK.DAL.Models;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
 
-namespace Bijankur.DAL.Repository
+
+namespace BJK.DAL.Repository
 {
     public interface IUserRepository
     {
@@ -14,6 +18,7 @@ namespace Bijankur.DAL.Repository
         Users Find(long userid);
         Users FindByEmail(string email);
         IEnumerable<Users> GetAll();
+        bool AuthoriseUserWithPermission(string email, string permission);
     }
     public class UserRepository : IUserRepository
     {
@@ -117,6 +122,49 @@ namespace Bijankur.DAL.Repository
             return allUsers;
         }
 
+        public bool AuthoriseUserWithPermission(string email, string permission)
+        {
+            bool result = false;
+             try
+            {
+                System.Data.Common.DbDataReader sqlReader;
+                using (var cmd = _context.Database.GetDbConnection().CreateCommand())
+                {
+                    cmd.CommandText = "p_P_PermissionValidation";
+                    cmd.CommandType = CommandType.StoredProcedure;
 
+                    if (cmd.Connection.State != ConnectionState.Open)
+                        cmd.Connection.Open();
+
+                    cmd.Parameters.Add(new SqlParameter("@PermissionCodes", SqlDbType.NVarChar)
+                    {
+                        Value = permission
+                    });
+                  
+                    cmd.Parameters.Add(new SqlParameter("@Email", SqlDbType.NVarChar)
+                    {
+                        Value = email
+                    });
+
+                    sqlReader = (System.Data.Common.DbDataReader)cmd.ExecuteReader();
+
+                    while (sqlReader.Read())
+                    {
+                        string resultColValue = sqlReader["Result"].ToString();
+                        if (resultColValue != null && resultColValue.ToString().ToLower() == "1")
+                        {
+                            result = true;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+                result = false;
+            }
+
+            return result;
+        }
     }
 }

@@ -9,18 +9,18 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore;
-using Bijankur.DAL;
-using Bijankur.BL.Services;
-using Bijankur.DAL.Repository;
+using BJK.DAL;
+using BJK.BL.Services;
+using BJK.DAL.Repository;
 using Swashbuckle.Swagger;
 using Swashbuckle.Swagger.Model;
 using Serilog;
-using Bijankur.BL.Security;
+using BJK.BL.Security;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
-using Bijankur.API.Common;
+using BJK.API.Common;
 
-namespace Bijankur.API
+namespace BJK.API
 {
     public class Startup
     {
@@ -63,16 +63,20 @@ namespace Bijankur.API
         
             services.Configure<JWTSettings>(Configuration.GetSection("JWTSettings"));
 
-            services.AddTransient<IErrorMessageService, ErrorMessageService>();
+            services.AddTransient<ISecurityHelper, SecurityHelper>();
             services.AddTransient<IUserService, UserService>();
             services.AddTransient<IRoleService, RoleService>();
+            services.AddTransient<IMenuService, MenuService>();
+            services.AddTransient<IPermissionService, PermissionService>();
+            services.AddTransient<IErrorMessageService, ErrorMessageService>();
 
-            
-            services.AddTransient<IErrorMessageRepository, ErrorMessageRepository>();
+           
             services.AddTransient<IUserRepository, UserRepository>();
             services.AddTransient<IRoleRepository, RoleRepository>();
-
-            services.AddTransient<ISecurityHelper, SecurityHelper>();
+            services.AddTransient<IMenuRepository, MenuRepository>();
+            services.AddTransient<IPermissionRepository, PermissionRepository>();
+            services.AddTransient<IErrorMessageRepository, ErrorMessageRepository>();
+        
             
 
             services.AddSwaggerGen(options => {

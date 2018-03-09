@@ -1,11 +1,11 @@
-﻿using Bijankur.DAL.Models;
-using Bijankur.DAL.Repository;
+﻿using BJK.DAL.Models;
+using BJK.DAL.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Bijankur.BL.Services
+namespace BJK.BL.Services
 {
     public interface IErrorMessageService
     {

@@ -1,10 +1,10 @@
-﻿using Bijankur.DAL.Models;
+﻿using BJK.DAL.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Bijankur.DAL.Repository
+namespace BJK.DAL.Repository
 {
     public interface IRoleRepository
     {
@@ -14,6 +14,7 @@ namespace Bijankur.DAL.Repository
         Roles Find(int roleid);
         Roles FindByName(string rolename);
         IEnumerable<Roles> GetAll();
+        bool ValidateRoleName(int roleid, string rolename);
     }
     public class RoleRepository : IRoleRepository
     {
@@ -109,6 +110,22 @@ namespace Bijankur.DAL.Repository
         {
             IEnumerable<Roles> allRoles = _context.Roles.AsQueryable<Roles>().ToList();
             return allRoles;
+        }
+
+        public bool ValidateRoleName(int roleid, string rolename)
+        {
+            bool result = false;
+            var lstRole =_context.Roles.Where(x => x.RoleName.ToLower() == rolename.ToLower() && x.RoleId != roleid).ToList();
+            if(lstRole.Count > 0)
+            {
+                result = false;
+            }
+            else
+            {
+                result = true;
+            }
+
+            return result;
         }
     }
 }

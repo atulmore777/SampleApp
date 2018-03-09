@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Bijankur.BL.ViewModels.RequestViewModel
+namespace BJK.BL.ViewModels.RequestViewModel
 {
     public class UserLoginRequestViewModel
     {

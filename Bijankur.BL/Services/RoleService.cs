@@ -1,8 +1,8 @@
-﻿using Bijankur.BL.Common;
-using Bijankur.BL.ViewModels.RequestViewModel;
-using Bijankur.BL.ViewModels.ResponseViewModel;
-using Bijankur.DAL.Models;
-using Bijankur.DAL.Repository;
+﻿using BJK.BL.Common;
+using BJK.BL.ViewModels.RequestViewModel;
+using BJK.BL.ViewModels.ResponseViewModel;
+using BJK.DAL.Models;
+using BJK.DAL.Repository;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -10,14 +10,14 @@ using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using System.IdentityModel.Tokens.Jwt;
-using Bijankur.BL.Security;
+using BJK.BL.Security;
 
-namespace Bijankur.BL.Services
+namespace BJK.BL.Services
 {
     public interface IRoleService
     {
         ResponseViewModel<RoleCreateResponseViewModel> CreateRole(RoleCreateRequestViewModel inputModel);
-
+        ResponseViewModel<RoleUpdateResponseViewModel> UpdateRole(RoleUpdateRequestViewModel inputModel);
         ResponseViewModel<List<RoleResponseViewModel>> GetAll();
 
         ResponseViewModel<RoleResponseViewModel> GetById(int userId);
@@ -121,8 +121,83 @@ namespace Bijankur.BL.Services
 
                 response.Status = false;
                 response.Message = _errorMessageService.GetErrorMessagesData("501");
+                response.StatusCode = (int)HttpStatusCode.BadRequest;               
+            }
+            return response;
+        }
+
+        public ResponseViewModel<RoleUpdateResponseViewModel> UpdateRole(RoleUpdateRequestViewModel inputModel)
+        {
+            ResponseViewModel<RoleUpdateResponseViewModel> response = new ResponseViewModel<RoleUpdateResponseViewModel>();
+            List<Error> lstError = new List<Error>();
+            RoleUpdateResponseViewModel objRoleUpdateResponseViewModel = new RoleUpdateResponseViewModel();
+            try
+            {
+                _loggerService.LogInformation(1, "## [RoleService][UpdateRole]- Start calling UpdateRole method.");
+           
+                    Roles objRoles = new Roles()
+                    {
+                        RoleId = inputModel.roleid,
+                        RoleName = inputModel.rolename,
+                        RoleDescription = inputModel.roledescription,
+                        IsDeleted = false,
+                        UpdatedBy = inputModel.updatedby,                
+                        UpdatedOn = DateTime.UtcNow
+                    };
+
+                    _loggerService.LogInformation(1, "## [UserService][UpdateRole]- UpdateRole Model is RoleName : " + objRoles.RoleName);
+
+                    bool result = _roleRepository.Update(objRoles);
+                    if (result)
+                    {
+                        objRoleUpdateResponseViewModel.roleid = inputModel.roleid;
+                        objRoleUpdateResponseViewModel.rolename = objRoles.RoleName;
+                        objRoleUpdateResponseViewModel.roledescription = objRoles.RoleDescription;
+                        _loggerService.LogInformation(1, "## [UserService][UpdateRole]- Role updated sucessfully : " + objRoleUpdateResponseViewModel.rolename);
+                    }
+                    else
+                    {
+                        _loggerService.LogInformation(1, "## [UserService][UpdateRole]- Role not updated : " + objRoleUpdateResponseViewModel.rolename);
+                        var errorMessage = _errorMessageService.GetErrorMessagesData("122");
+                        var objError = new Error { Code = "122", Message = errorMessage };
+                        lstError.Add(objError);
+                    }
+              
+
+                if (lstError.Count == 0)
+                {
+                    response.Status = true;
+                    response.Message = "Role updated sucessfully";
+                    response.StatusCode = (int)HttpStatusCode.OK;
+                    response.Result = objRoleUpdateResponseViewModel;
+                }
+                else
+                {
+                    response.Status = false;
+                    response.Errors = lstError;
+                    response.StatusCode = (int)HttpStatusCode.BadRequest;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                if (ex.InnerException != null)
+                {
+                    _loggerService.LogError(1, "## [RoleService][UpdateRole] innerexception :" + ex.InnerException.ToString());
+
+                    if (ex.InnerException.Message != null)
+                    {
+                        _loggerService.LogError(1, "## [RoleService][UpdateRole] innerexception message :" + ex.InnerException.Message.ToString());
+                    }
+                }
+                else
+                {
+                    _loggerService.LogError(1, "## [RoleService][UpdateRole] exception :" + ex.Message.ToString());
+                }
+
+                response.Status = false;
+                response.Message = _errorMessageService.GetErrorMessagesData("501");
                 response.StatusCode = (int)HttpStatusCode.BadRequest;
-                return response;
             }
             return response;
         }

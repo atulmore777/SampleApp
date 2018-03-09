@@ -1,8 +1,8 @@
-﻿using Bijankur.BL.Common;
-using Bijankur.BL.ViewModels.RequestViewModel;
-using Bijankur.BL.ViewModels.ResponseViewModel;
-using Bijankur.DAL.Models;
-using Bijankur.DAL.Repository;
+﻿using BJK.BL.Common;
+using BJK.BL.ViewModels.RequestViewModel;
+using BJK.BL.ViewModels.ResponseViewModel;
+using BJK.DAL.Models;
+using BJK.DAL.Repository;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -10,9 +10,9 @@ using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using System.IdentityModel.Tokens.Jwt;
-using Bijankur.BL.Security;
+using BJK.BL.Security;
 
-namespace Bijankur.BL.Services
+namespace BJK.BL.Services
 {
     public interface IUserService
     {

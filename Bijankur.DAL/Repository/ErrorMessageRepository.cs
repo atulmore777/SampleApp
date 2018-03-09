@@ -1,9 +1,10 @@
-﻿using System;
+﻿using Microsoft.Extensions.Logging;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Bijankur.DAL.Repository
+namespace BJK.DAL.Repository
 {
     public interface IErrorMessageRepository
     {
@@ -11,18 +12,27 @@ namespace Bijankur.DAL.Repository
     }
     public class ErrorMessageRepository : IErrorMessageRepository
     {
+        public ILogger _loggerRepository { get; set; }
         public DataLayerContext _context { get; set; }
+    
         public ErrorMessageRepository(DataLayerContext context)
         {
-            _context = context;
+            _context = context;           
         }
         public string GetByCode(string Errorcode)
         {
             string errorMessage = string.Empty;
-            var objErrorMessage = _context.ErrorMessage.Where(t => t.ErrorCode.ToString().ToLower() == Errorcode.ToString().ToLower()).FirstOrDefault();
-            if (objErrorMessage != null)
+            try
             {
-                errorMessage = objErrorMessage.Message;
+                var objErrorMessage = _context.ErrorMessage.Where(t => t.ErrorCode.ToString().ToLower() == Errorcode.ToString().ToLower()).FirstOrDefault();
+                if (objErrorMessage != null)
+                {
+                    errorMessage = objErrorMessage.Message;
+                }
+            }
+            catch(Exception ex)
+            {
+
             }
             return errorMessage;
         }

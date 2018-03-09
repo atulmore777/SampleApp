@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
-using static Bijankur.BL.Common.Validation;
+using static BJK.BL.Common.Validation;
 
-namespace Bijankur.BL.ViewModels.RequestViewModel
+namespace BJK.BL.ViewModels.RequestViewModel
 {
     public class UserUpdateRequestViewModel
     {

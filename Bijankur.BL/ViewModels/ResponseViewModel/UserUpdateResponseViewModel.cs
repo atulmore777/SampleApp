@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Bijankur.BL.ViewModels.ResponseViewModel
+namespace BJK.BL.ViewModels.ResponseViewModel
 {
     public class UserUpdateResponseViewModel
     {

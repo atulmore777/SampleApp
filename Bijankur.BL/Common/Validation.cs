@@ -1,5 +1,6 @@
-﻿using Bijankur.DAL;
-using Bijankur.DAL.Repository;
+﻿using BJK.BL.ViewModels.RequestViewModel;
+using BJK.DAL;
+using BJK.DAL.Repository;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Bijankur.BL.Common
+namespace BJK.BL.Common
 {
     public class Validation
     {
@@ -156,33 +157,99 @@ namespace Bijankur.BL.Common
             }
         }
 
-        //public class RoleNameValidate : ValidationAttribute
-        //{
-        //    public override bool IsValid(object value)
-        //    {
-        //        bool result = true;
-        //        try
-        //        {
-        //            if (value != null && value != "")
-        //            {
-        //                result = false;
+        public class RoleIdValidate : ValidationAttribute
+        {
+            public override bool IsValid(object value)
+            {
+                bool result = true;
+                try
+                {
+                    if (value != null && value != "")
+                    {
+                        result = false;
 
-        //                string roleName = Convert.ToString(value);
-        //                DataLayerContext dlContext = new DataLayerContext();
-        //                RoleRepository roleRepository = new RoleRepository(dlContext);
-        //                var roleData = roleRepository.FindByName(roleName);
-        //                if (roleData != null && roleData.RoleId > 0)
-        //                {
-        //                    result = true;
-        //                }
-        //            }
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            result = false;
-        //        }
-        //        return result;
-        //    }
-        //}
+                        int roleId = Convert.ToInt32(value);
+                        DataLayerContext dlContext = new DataLayerContext();
+                        RoleRepository roleRepository = new RoleRepository(dlContext);
+                        var roleData = roleRepository.Find(roleId);
+                        if (roleData != null && roleData.RoleId > 0)
+                        {
+                            result = true;
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    result = false;
+                }
+                return result;
+            }
+        }
+
+        public class RoleNameForUpdateValidation : ValidationAttribute
+        {
+            protected override ValidationResult IsValid(object value, ValidationContext validationContext)
+            {
+                if (value != null && value != "")
+                {
+                    var model = (RoleUpdateRequestViewModel)validationContext.ObjectInstance;
+
+                    if (!string.IsNullOrEmpty(model.rolename))
+                    {
+                        int roleId = model.roleid;
+                        string roleName = Convert.ToString(model.rolename);
+                        try
+                        {
+                            DataLayerContext dlContext = new DataLayerContext();
+                            RoleRepository roleRepository = new RoleRepository(dlContext);
+                            bool actualresult = roleRepository.ValidateRoleName(roleId, roleName);
+                            if (actualresult)
+                            {
+                                return ValidationResult.Success;
+                            }
+                            else
+                            {
+                                return new ValidationResult("130");
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                           // return new ValidationResult("2020$$areaname");
+                        }
+                    }
+                }
+                return ValidationResult.Success;
+            }
+        }
+
+        public class PermissionIdValidate : ValidationAttribute
+        {
+            public override bool IsValid(object value)
+            {
+                bool result = true;
+                try
+                {
+                    if (value != null && value != "")
+                    {
+                        result = false;
+
+                        int roleId = Convert.ToInt32(value);
+                        DataLayerContext dlContext = new DataLayerContext();
+                        PermissionRepository permissionRepository = new PermissionRepository(dlContext);
+                        var permissionData = permissionRepository.Find(roleId);
+                        if (permissionData != null && permissionData.PermissionId > 0)
+                        {
+                            result = true;
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    result = false;
+                }
+                return result;
+            }
+        }
+
     }
 }

@@ -7,7 +7,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Bijankur.API.Common
+namespace BJK.API.Common
 {
     public class AddAuthTokenHeaderParameter : IOperationFilter
     {
@@ -29,7 +29,7 @@ namespace Bijankur.API.Common
             {
                 operation.Parameters.Add(new NonBodyParameter()
                 {
-                    Name = "usertoken",
+                    Name = "Authorization",
                     In = "header",
                     Type = "string",
                     Required = true
