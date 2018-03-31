@@ -3,6 +3,15 @@
   "version": 2,
   "targets": {
     ".NETStandard,Version=v1.6": {
+      "FileHelpers/3.2.7": {
+        "type": "package",
+        "compile": {
+          "lib/net45/FileHelpers.dll": {}
+        },
+        "runtime": {
+          "lib/net45/FileHelpers.dll": {}
+        }
+      },
       "JWT/3.1.1": {
         "type": "package",
         "dependencies": {
@@ -1117,6 +1126,9 @@
         },
         "compile": {
           "ref/netstandard1.3/System.Collections.dll": {}
+        },
+        "runtime": {
+          "lib/net45/_._": {}
         }
       },
       "System.Collections.Concurrent/4.3.0": {
@@ -1344,6 +1356,9 @@
         "compile": {
           "ref/netstandard1.3/System.Data.SqlClient.dll": {}
         },
+        "runtime": {
+          "lib/net451/System.Data.SqlClient.dll": {}
+        },
         "runtimeTargets": {
           "runtimes/unix/lib/netstandard1.3/System.Data.SqlClient.dll": {
             "assetType": "runtime",
@@ -1376,6 +1391,9 @@
         },
         "compile": {
           "ref/netstandard1.3/System.Diagnostics.Debug.dll": {}
+        },
+        "runtime": {
+          "lib/net45/_._": {}
         }
       },
       "System.Diagnostics.DiagnosticSource/4.0.0": {
@@ -1403,6 +1421,9 @@
         },
         "compile": {
           "ref/netstandard1.0/System.Diagnostics.Tools.dll": {}
+        },
+        "runtime": {
+          "lib/net45/_._": {}
         }
       },
       "System.Diagnostics.Tracing/4.3.0": {
@@ -1414,6 +1435,9 @@
         },
         "compile": {
           "ref/netstandard1.5/System.Diagnostics.Tracing.dll": {}
+        },
+        "runtime": {
+          "lib/net45/_._": {}
         }
       },
       "System.Dynamic.Runtime/4.0.11": {
@@ -1451,6 +1475,9 @@
         },
         "compile": {
           "ref/netstandard1.3/System.Globalization.dll": {}
+        },
+        "runtime": {
+          "lib/net45/_._": {}
         }
       },
       "System.Globalization.Calendars/4.0.1": {
@@ -1531,6 +1558,9 @@
         },
         "compile": {
           "ref/netstandard1.5/System.IO.dll": {}
+        },
+        "runtime": {
+          "lib/net45/_._": {}
         }
       },
       "System.IO.Compression/4.1.0": {
@@ -1553,6 +1583,9 @@
         },
         "compile": {
           "ref/netstandard1.3/System.IO.Compression.dll": {}
+        },
+        "runtime": {
+          "lib/net45/_._": {}
         },
         "runtimeTargets": {
           "runtimes/unix/lib/netstandard1.3/System.IO.Compression.dll": {
@@ -1783,6 +1816,9 @@
         "compile": {
           "ref/netstandard1.3/System.Net.Http.dll": {}
         },
+        "runtime": {
+          "lib/net45/_._": {}
+        },
         "runtimeTargets": {
           "runtimes/unix/lib/netstandard1.6/System.Net.Http.dll": {
             "assetType": "runtime",
@@ -1836,6 +1872,9 @@
         },
         "compile": {
           "ref/netstandard1.3/System.Net.Primitives.dll": {}
+        },
+        "runtime": {
+          "lib/net45/_._": {}
         }
       },
       "System.Net.Security/4.0.0": {
@@ -1940,6 +1979,9 @@
         },
         "compile": {
           "ref/netstandard1.5/System.Reflection.dll": {}
+        },
+        "runtime": {
+          "lib/net45/_._": {}
         }
       },
       "System.Reflection.Emit/4.0.1": {
@@ -1997,6 +2039,9 @@
         },
         "compile": {
           "ref/netstandard1.0/System.Reflection.Extensions.dll": {}
+        },
+        "runtime": {
+          "lib/net45/_._": {}
         }
       },
       "System.Reflection.Primitives/4.3.0": {
@@ -2008,6 +2053,9 @@
         },
         "compile": {
           "ref/netstandard1.0/System.Reflection.Primitives.dll": {}
+        },
+        "runtime": {
+          "lib/net45/_._": {}
         }
       },
       "System.Reflection.TypeExtensions/4.1.0": {
@@ -2034,6 +2082,9 @@
         },
         "compile": {
           "ref/netstandard1.0/System.Resources.ResourceManager.dll": {}
+        },
+        "runtime": {
+          "lib/net45/_._": {}
         }
       },
       "System.Runtime/4.3.0": {
@@ -2044,6 +2095,9 @@
         },
         "compile": {
           "ref/netstandard1.5/System.Runtime.dll": {}
+        },
+        "runtime": {
+          "lib/net45/_._": {}
         }
       },
       "System.Runtime.Extensions/4.3.0": {
@@ -2055,6 +2109,9 @@
         },
         "compile": {
           "ref/netstandard1.5/System.Runtime.Extensions.dll": {}
+        },
+        "runtime": {
+          "lib/net45/_._": {}
         }
       },
       "System.Runtime.Handles/4.3.0": {
@@ -2080,6 +2137,9 @@
         },
         "compile": {
           "ref/netstandard1.5/System.Runtime.InteropServices.dll": {}
+        },
+        "runtime": {
+          "lib/net45/_._": {}
         }
       },
       "System.Runtime.InteropServices.RuntimeInformation/4.0.0": {
@@ -2095,6 +2155,9 @@
         },
         "compile": {
           "ref/netstandard1.1/System.Runtime.InteropServices.RuntimeInformation.dll": {}
+        },
+        "runtime": {
+          "lib/net45/System.Runtime.InteropServices.RuntimeInformation.dll": {}
         },
         "runtimeTargets": {
           "runtimes/unix/lib/netstandard1.1/System.Runtime.InteropServices.RuntimeInformation.dll": {
@@ -2423,6 +2486,9 @@
         },
         "compile": {
           "ref/netstandard1.3/System.Text.Encoding.dll": {}
+        },
+        "runtime": {
+          "lib/net45/_._": {}
         }
       },
       "System.Text.Encoding.CodePages/4.0.1": {
@@ -2465,6 +2531,9 @@
         },
         "compile": {
           "ref/netstandard1.3/System.Text.Encoding.Extensions.dll": {}
+        },
+        "runtime": {
+          "lib/net45/_._": {}
         }
       },
       "System.Text.Encodings.Web/4.0.1": {
@@ -2546,6 +2615,9 @@
         },
         "compile": {
           "ref/netstandard1.3/System.Threading.Tasks.dll": {}
+        },
+        "runtime": {
+          "lib/net45/_._": {}
         }
       },
       "System.Threading.Tasks.Extensions/4.0.0": {
@@ -2596,6 +2668,9 @@
         },
         "compile": {
           "ref/netstandard1.2/System.Threading.Timer.dll": {}
+        },
+        "runtime": {
+          "lib/net451/_._": {}
         }
       },
       "System.Xml.ReaderWriter/4.0.11": {
@@ -2658,17 +2733,27 @@
           "Microsoft.Extensions.Configuration.EnvironmentVariables": "1.0.0",
           "Microsoft.Extensions.Configuration.Json": "1.0.0",
           "System.Data.Common": "4.1.0"
-        },
-        "compile": {
-          "netstandard1.6/Bijankur.DAL.dll": {}
-        },
-        "runtime": {
-          "netstandard1.6/Bijankur.DAL.dll": {}
         }
       }
     }
   },
   "libraries": {
+    "FileHelpers/3.2.7": {
+      "sha512": "0gW0b6a39jX0amH3UB/z/4BBDLn3wOivR0vS/ub+nTM8Q4IEAmTNiMhGxGs9aS7LuU3ltSqfpyvgB0vwCUJpPg==",
+      "type": "package",
+      "path": "FileHelpers/3.2.7",
+      "files": [
+        "FileHelpers.3.2.7.nupkg.sha512",
+        "FileHelpers.nuspec",
+        "Readme.txt",
+        "lib/net35/FileHelpers.dll",
+        "lib/net35/FileHelpers.xml",
+        "lib/net40/FileHelpers.dll",
+        "lib/net40/FileHelpers.xml",
+        "lib/net45/FileHelpers.dll",
+        "lib/net45/FileHelpers.xml"
+      ]
+    },
     "JWT/3.1.1": {
       "sha512": "be77vY96lqvA0IO12fDJq6kMgjkSKPZ1NOa+e4jZHzKtUQcDkWEYiHVzqStju9/U+xo8QuzG4noFg8Q1KY52ww==",
       "type": "package",
@@ -7581,13 +7666,13 @@
     },
     "Bijankur.DAL/1.0.0": {
       "type": "project",
-      "path": "../Bijankur.DAL/project.json",
-      "msbuildProject": "../Bijankur.DAL/Bijankur.DAL.xproj"
+      "path": "../Bijankur.DAL/project.json"
     }
   },
   "projectFileDependencyGroups": {
     "": [
       "Bijankur.DAL >= 1.0.0-*",
+      "FileHelpers >= 3.2.7",
       "JWT >= 3.1.1",
       "Microsoft.AspNetCore.Mvc.Abstractions >= 1.0.6",
       "Microsoft.AspNetCore.Mvc.Formatters.Json >= 1.0.1",

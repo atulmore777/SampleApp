@@ -1,0 +1,21 @@
+﻿@{
+    Layout = null;
+    ViewBag.Title = "Index";
+}
+
+
+@*<!-- top navbar-->
+<header ng-include="'/Admin/Partials/TopNavbar'" ng-if="app.layout.isAdmin==true" class="topnavbar-wrapper"></header>
+<!-- sidebar-->
+<aside ng-include="'/Admin/Partials/Sidebar'" ng-if="app.layout.isAdmin==true" ng-controller="SidebarController" class="aside"></aside>*@
+<!-- offsidebar-->
+@*<aside ng-include="'/Admin/Partials/Offsidebar'" ng-if="app.layout.isAdmin==true" class="offsidebar"></aside>*@
+<!-- Main section-->
+
+
+<section>
+    <!-- Page content-->
+    <div ui-view="" autoscroll="false"></div>
+</section>
+
+@*<div ui-view="" data-autoscroll="false" class="wrapper"></div>*@

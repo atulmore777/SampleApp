@@ -1,7 +1,1 @@
-#:D:\Other\BKR\Bijankur.DAL\Bijankur.DAL.xproj
-#:D:\Other\BKR\Bijankur.BL\Bijankur.BL.xproj
-D:\Other\BKR\Bijankur.BL\Bijankur.BL.xproj|D:\Other\BKR\Bijankur.DAL\Bijankur.DAL.xproj
-#:D:\Other\BKR\Bijankur.API\Bijankur.API.xproj
-D:\Other\BKR\Bijankur.API\Bijankur.API.xproj|D:\Other\BKR\Bijankur.BL\Bijankur.BL.xproj
-D:\Other\BKR\Bijankur.API\Bijankur.API.xproj|D:\Other\BKR\Bijankur.DAL\Bijankur.DAL.xproj
-D:\Other\BKR\Bijankur.BL\Bijankur.BL.xproj|D:\Other\BKR\Bijankur.DAL\Bijankur.DAL.xproj
+#:D:\Other\BJK\ProjectLocation\Bijankur.API\BJK.API.xproj

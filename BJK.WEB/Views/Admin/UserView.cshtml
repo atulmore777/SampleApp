@@ -1,0 +1,69 @@
+﻿@{
+    // This is requried for AngularJS because we have to send only the view markup (not within the layout)
+    Layout = null;
+    ViewBag.Title = "Index";
+}
+
+   <div ng-controller="userCtrl" ng-init="GetUserDetails();">
+ 
+        <div class="row">
+            <div class="col-lg-10"> <h4>Users </h4> </div>
+            <div class="col-lg-2"><button class="btn btn-default pull-right" ng-click="OpenCreateUserDialog();">Add User</button></div>
+            <div class="col-sm-12 col-md-12 col-lg-12">
+                <hr />
+            </div>
+        </div>
+        <div class="row">
+
+            <form role="form">
+                <div class="col-md-3 col-sm-4 mb form-group">
+                    <label>Email</label>
+                    <input type="email" placeholder="Search Email" class="form-control" />
+                </div>
+                <div class="col-md-3 col-sm-4 mb form-group">
+                    <label>First Name</label>
+                    <input type="text" placeholder="First Name" class="form-control" />
+                </div>
+                <div class="col-md-3 col-sm-4 mb form-group">
+                    <label>Contact No</label>
+                    <input type="text" placeholder="Contact No" class="form-control" />
+                </div>
+                <div class="col-md-3 col-sm-4 mb form-group">
+                   <button class="mb-sm btn btn-default btn-sm" style="margin-top: 26px;">Clear</button>
+                   <button class="mb-sm btn btn-default btn-sm  " style="margin-top: 26px;">Search</button>
+                </div>
+            </form>         
+           <div class="col-md-12">
+               <div class="panel panel-default">
+                   <table class="table">
+                       <thead>
+                           <tr>
+                               <th>#</th>
+                               <th>First Name</th>
+                               <th>Contact Number</th>
+                               <th>Email</th>
+                               <th>Delete</th>
+                           </tr>
+                       </thead>
+                       <tbody>
+                           <tr ng-repeat="ul in userlist">
+                               <td>{{ul.id}}</td>
+                               <td>{{ul.firstname}}</td>
+                               <td>{{ul.lastname}}</td>
+                               <td>{{ul.email}}</td>
+                               <td><em class="fa fa-trash-o p-sm  border-radius_sm"></em></td>
+                           </tr>
+                       </tbody>
+                   </table>
+               </div>
+            </div>
+        </div>
+
+   </div>
+
+<script type="text/ng-template" id="firstDialogId"  >
+    <div class="col-md-12 panel-heading panal-heading-theme "> <h4 class="m0 text-white text-center">New User</h4></div>
+    <div class="panel-body" style="max-height:800px;overflow:auto">
+    </div>
+</script>
+

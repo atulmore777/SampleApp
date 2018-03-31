@@ -12,10 +12,14 @@ using Microsoft.AspNetCore.Authorization;
 using System.Security.Claims;
 using BJK.BL.Common;
 using BJK.BL.Security;
+using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Http;
+using FileHelpers;
 
 namespace BJK.API.Controllers
 {
-    [Route("api/[controller]")]
+    [EnableCors("AllowAll")]
+    [Route("v1api/[controller]")]
     public class UserController : Controller
     {
         private readonly IErrorMessageService errorMessageService;
@@ -30,9 +34,9 @@ namespace BJK.API.Controllers
             this.loggerService = loggerService.CreateLogger<UserController>();
         }
 
-        [Authorize]
+       // [Authorize]
         [HttpGet]
-        [AuthoriseAttribute(Permission = "User:Get")]
+        //[AuthoriseAttribute(Permission = "User:Get")]
         public IActionResult Get()
         {
             try
@@ -206,6 +210,29 @@ namespace BJK.API.Controllers
         }
 
 
+
+        [HttpPost("UploadUsers")]
+        public IActionResult Post(IFormFile file)
+        {
+            try
+            {
+                // Ensure the file has contents before processing.
+                if (file == null || file.Length == 0)
+                {
+                    var errorMessage = errorMessageService.GetErrorMessagesData("137");
+                    return Json(new { status = false, message = errorMessage, data = "" });
+                }
+
+                var engine = new FileHelperEngine(typeof(FileUploadUserRequestViewModel));
+                var Stores = (FileUploadUserRequestViewModel[])engine.ReadFile(file.Name);
+                return Json(new { status = true, message = Stores.Length });
+
+            }
+            catch (Exception ex)
+            {
+                return Json(new { status = false, message = ex.Message });
+            }
+        }
 
         [AllowAnonymous]
         [HttpPost("Authenticate")]

@@ -122,6 +122,10 @@ VALUES (35, '135','Permission','Permission assigned successfully','en',getdate()
 INSERT INTO ErrorMessage (ErrorMessageId, ErrorCode,Module, Message ,ErrorLanguage,CreatedOn,UpdatedOn,CreatedBy,UpdatedBy)
 VALUES (36, '136','Permission','Permission not assigned due to some other error','en',getdate(),getdate(),'admin','admin');
 
+INSERT INTO ErrorMessage (ErrorMessageId, ErrorCode,Module, Message ,ErrorLanguage,CreatedOn,UpdatedOn,CreatedBy,UpdatedBy)
+VALUES (37, '137','User','Please provide file','en',getdate(),getdate(),'admin','admin');
+
+
 INSERT INTO Permission (PermissionCode,PermissionName,Module,Description,CreatedOn,UpdatedOn,CreatedBy,UpdatedBy)
 VALUES ('User:Create','User Create', 'User','Create user',getdate(),getdate(),'system admin','system admin');
 

@@ -1,0 +1,23 @@
+{
+  "dashboard": {
+    "WELCOME": "Welcome to {{appName}}"
+  },
+  "topbar": {
+    "search": {
+      "PLACEHOLDER": "Type and hit enter.."
+    }
+  },
+  "sidebar": {
+    "WELCOME": "Welcome",
+    "heading": {
+      "HEADER": "Main Navigation"
+    },
+    "nav": {
+      "SINGLEVIEW": "Single View",
+      "Setup": {
+        "Setup": "Setup",
+        "Users": "Users"
+      }
+    }
+  }
+}

@@ -76,8 +76,23 @@ namespace BJK.API
             services.AddTransient<IMenuRepository, MenuRepository>();
             services.AddTransient<IPermissionRepository, PermissionRepository>();
             services.AddTransient<IErrorMessageRepository, ErrorMessageRepository>();
-        
-            
+
+            services.AddCors();
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAll",
+                    builder =>
+                    {
+                        builder
+                       .AllowAnyMethod()
+                       .AllowAnyOrigin()
+                       .AllowCredentials()
+                       .AllowAnyHeader()
+                       .WithExposedHeaders("accept", "content-type", "authorization", "x-experience-api-version")
+                       .WithHeaders("accept", "content-type", "authorization", "apptoken", "usertoken")
+                       .SetPreflightMaxAge(TimeSpan.FromSeconds(3600));
+                    });
+            });
 
             services.AddSwaggerGen(options => {
                 options.SingleApiVersion(new Info
@@ -123,6 +138,8 @@ namespace BJK.API
 
 
             app.UseMvc();
+          
+
             app.UseApplicationInsightsRequestTelemetry();
 
             app.UseApplicationInsightsExceptionTelemetry();

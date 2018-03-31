@@ -1,0 +1,6 @@
+﻿@media only screen and (min-width: 768px) {
+ .wrapper > section,
+  .wrapper > footer {
+    margin-left: 0px;
+  } 
+}
